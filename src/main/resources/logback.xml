@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.padual.com/java/logback.xsd"
+    scan="true" scanPeriod="30 seconds">
+
+    <appender name="logfile" class="ch.qos.logback.core.FileAppender">
+        <file>${catalina.home}/logs/test/test.log</file>
+        <append>true</append>
+        <encoder>
+            <Pattern>[%d{YYYY-MM-dd HH:mm:ss}] [%-5p] [%F:%L] %m%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>[%d{YYYY-MM-dd HH:mm:ss}] [%-5p] [%F:%L] %m%n</Pattern>
+        </layout>
+    </appender>
+    
+    <!-- logfile | console -->
+    
+    <!-- TRACE | DEBUG | INFO | WARN | ERROR -->
+ 
+     <!-- Spring Framework -->
+    <logger name="org.springframework" level="ERROR" />
+     
+     <!-- DB -->
+    <logger name="java.sql" level="ERROR" />
+    <logger name="java.sql.ResultSet" level="ERROR" />
+ 
+    <logger name="com.wemakeprice" level="ERROR" />
+    
+    <!-- ROOT -->
+    <root level="WARN">
+        <appender-ref ref="console" />
+    </root>
+    
+</configuration>
